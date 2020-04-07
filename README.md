@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# 암기왕 프로젝트 백엔드 서버 
 
 Steps to run this project:
 
