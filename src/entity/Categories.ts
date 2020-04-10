@@ -8,25 +8,19 @@ import {
 import { Questions } from './Questions';
 
 @Entity()
-export class User extends BaseEntity {
+export class Categories extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  nick: string;
+  userId: number;
 
   @Column()
-  email: string;
+  domain: string;
 
   @Column()
-  password: string;
+  subdomain: string;
 
-  @Column()
-  provider: string;
-
-  @Column()
-  snsId: string;
-
-  @OneToMany(() => Questions, (question) => question.owner)
+  @OneToMany(() => Questions, (question) => question.category)
   questions: Questions[];
 }
