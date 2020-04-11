@@ -4,3 +4,12 @@ node_modules/
 build/
 tmp/
 temp/
+
+## dotenv
+.env
+
+## ormconfig
+ormconfig.json
+
+## todo
+todo.md

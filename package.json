@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "nodemon --exec ts-node src/index.ts",
+    "reset": "typeorm schema:drop",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint --fix src/**/*.ts"
   }
