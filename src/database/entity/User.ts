@@ -4,6 +4,8 @@ import {
   Column,
   BaseEntity,
   OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Questions } from './Questions';
 
@@ -29,4 +31,10 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Questions, (question) => question.owner)
   questions: Questions[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

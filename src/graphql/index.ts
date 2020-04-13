@@ -5,6 +5,7 @@ import { userResolver } from './user/userResolver';
 import { categoriesSchema } from './categories/categoriesSchema';
 import { userSchema } from './user/userSchema';
 import { questionsSchema } from './questions/questionsSchema';
+import { enumSchema } from './shared/enumSchema';
 
 const linkSchema = gql`
   type Query {
@@ -17,6 +18,12 @@ const linkSchema = gql`
 
 const resolvers = [userResolver, questionsResolver, categoriesResolver];
 
-const schemas = [linkSchema, categoriesSchema, userSchema, questionsSchema];
+const schemas = [
+  linkSchema,
+  enumSchema,
+  categoriesSchema,
+  userSchema,
+  questionsSchema,
+];
 
 export { resolvers, schemas };
