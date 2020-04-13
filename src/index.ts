@@ -2,14 +2,12 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import * as express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-
-import { typeDefs } from './typeDefs';
-import { resolvers } from './resolvers';
+import { resolvers, schemas } from './graphql';
 
 // 나중에 HF server 보고 cors 설정 등 추가할 수
 
 const startServer = async () => {
-  const server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({ typeDefs: schemas, resolvers });
 
   await createConnection();
 
