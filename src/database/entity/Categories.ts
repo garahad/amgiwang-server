@@ -4,6 +4,8 @@ import {
   Column,
   BaseEntity,
   OneToMany,
+  UpdateDateColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { Questions } from './Questions';
 
@@ -23,4 +25,10 @@ export class Categories extends BaseEntity {
 
   @OneToMany(() => Questions, (question) => question.category)
   questions: Questions[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

@@ -4,6 +4,8 @@ import {
   Column,
   BaseEntity,
   ManyToOne,
+  UpdateDateColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { User } from './User';
 import { Categories } from './Categories';
@@ -36,4 +38,10 @@ export class Questions extends BaseEntity {
 
   @Column()
   answer: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

@@ -1,6 +1,15 @@
 import { Questions } from '../../database/entity/Questions';
 
 export const questionsResolver = {
+  // 수호님것처럼 이 아래가 있어야 하나?
+  // ImportanceEnum: {
+  //   ONE: 'ONE',
+  //   TWO: 'TWO',
+  //   THREE: 'THREE',
+  //   FOUR: 'FOUR',
+  //   FIVE: 'FIVE',
+  // },
+
   Query: {
     getQuestions: async (_: any, args: any) => {
       const { id } = args;
