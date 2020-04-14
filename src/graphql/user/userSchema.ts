@@ -1,6 +1,5 @@
 import { gql } from 'apollo-server-express';
 
-// extend 를 붙이고 안 붙이고 차이?
 // createdColumn, updatedColumn을 사용하면 schema, resolver에 굳이 추가안해줘도 알아서 들어가는 듯. 근데 수호님것보면 scalar DateTime이라고 해줬는데 DateTime을 이제 자동으로 지원하는건가?
 
 export const userSchema = gql`

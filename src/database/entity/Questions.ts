@@ -10,7 +10,7 @@ import {
 import { User } from './User';
 import { Categories } from './Categories';
 
-// 왜 난 여기 eslint 아래 에러 나지?
+// 왜 난 여기 eslint 아래 에러 나지? export는 왜 붙여야하지?
 export enum Importance {
   ONE = 'ONE',
   TWO = 'TWO',
