@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
+    "@types/morgan": "^1.9.0",
     "@types/node": "^8.0.29",
+    "@types/cookie-parser": "^1.4.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^6.8.0",
@@ -19,9 +21,12 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.11.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "eslint-config-airbnb": "^18.1.0",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
+    "morgan": "^1.10.0",
     "mysql": "^2.14.1",
     "reflect-metadata": "^0.1.10",
     "typeorm": "0.2.24"
