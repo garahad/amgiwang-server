@@ -12,7 +12,7 @@ import { resolvers, schemas } from './graphql';
 const startServer = async () => {
   const server = new ApolloServer({ typeDefs: schemas, resolvers });
 
-  await createConnection();
+  await createConnection('development');
 
   const app = express();
 
