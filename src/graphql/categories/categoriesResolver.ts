@@ -1,10 +1,10 @@
-import { Categories } from '../../database/entity/Categories';
+import { getCategoriesRepository } from '../../database';
 
 export const categoriesResolver = {
   Query: {
     getCategories: async (_: any, args: any) => {
       const { id } = args;
-      const categories = await Categories.find({
+      const categories = await getCategoriesRepository().find({
         where: { userId: id },
       });
       return categories;
@@ -14,12 +14,12 @@ export const categoriesResolver = {
     addCategory: async (_: any, args: any) => {
       const { userId, domain, subdomain } = args;
       try {
-        const category = Categories.create({
+        const category = getCategoriesRepository().create({
           userId,
           domain,
           subdomain,
         });
-        await category.save();
+        await getCategoriesRepository().save(category);
         return true;
       } catch (error) {
         console.log('error', error);
