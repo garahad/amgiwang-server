@@ -1,10 +1,10 @@
-import { User } from '../../database/entity/User';
+import { getUserRepository } from '../../database';
 
 export const userResolver = {
   Query: {
     getUser: async (_: any, args: any) => {
       const { id } = args;
-      const user = await User.findOne({ where: { id } });
+      const user = await getUserRepository().findOne({ where: { id } });
       return user;
     },
   },
@@ -12,14 +12,14 @@ export const userResolver = {
     addUser: async (_: any, args: any) => {
       const { snsId, provider, email, nick, password } = args;
       try {
-        const user = User.create({
+        const user = getUserRepository().create({
           snsId,
           provider,
           email,
           nick,
           password,
         });
-        await user.save();
+        await getUserRepository().save(user);
         return true;
       } catch (error) {
         console.log('error', error);

@@ -1,4 +1,4 @@
-import { Questions } from '../../database/entity/Questions';
+import { getQuestionsRepository } from '../../database';
 
 export const questionsResolver = {
   // 수호님것처럼 이 아래가 있어야 하나?
@@ -13,7 +13,9 @@ export const questionsResolver = {
   Query: {
     getQuestions: async (_: any, args: any) => {
       const { id } = args;
-      const questions = await Questions.find({ where: { owner: id } });
+      const questions = await getQuestionsRepository().find({
+        where: { owner: id },
+      });
       return questions;
     },
   },
@@ -21,14 +23,14 @@ export const questionsResolver = {
     addQuestion: async (_: any, args: any) => {
       const { owner, category, importance, questionContent, answer } = args;
       try {
-        const question = Questions.create({
+        const question = getQuestionsRepository().create({
           owner,
           category,
           importance,
           questionContent,
           answer,
         });
-        await question.save();
+        await getQuestionsRepository().save(question);
         return true;
       } catch (error) {
         console.log('error', error);

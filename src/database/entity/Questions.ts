@@ -2,7 +2,6 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  BaseEntity,
   ManyToOne,
   UpdateDateColumn,
   CreateDateColumn,
@@ -20,7 +19,7 @@ export enum Importance {
 }
 
 @Entity()
-export class Questions extends BaseEntity {
+export class Questions {
   @PrimaryGeneratedColumn()
   id: number;
 

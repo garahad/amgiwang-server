@@ -2,7 +2,6 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  BaseEntity,
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
@@ -10,7 +9,7 @@ import {
 import { Questions } from './Questions';
 
 @Entity()
-export class User extends BaseEntity {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
