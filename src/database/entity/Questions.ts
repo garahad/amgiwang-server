@@ -28,9 +28,11 @@ export class Questions {
 
   @ManyToOne(() => Categories, (category) => category.questions)
   category: Categories;
+  // category: string;
 
   @Column({ type: 'enum', enum: Importance })
   importance: Importance;
+  // importance: string;
 
   @Column()
   questionContent: string;
