@@ -15,8 +15,8 @@ export const questionsSchema = gql`
   }
   type Question {
     id: Int!
-    owner: Int!
-    category: Int!
+    owner: User!
+    category: Category!
     importance: ImportanceEnum!
     questionContent: String!
     answer: String!

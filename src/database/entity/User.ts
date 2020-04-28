@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Questions } from './Questions';
+import { Categories } from './Categories';
 
 @Entity()
 export class User {
@@ -27,6 +28,9 @@ export class User {
 
   @Column()
   snsId: string;
+
+  @OneToMany(() => Categories, (category) => category.user)
+  categories: Categories[];
 
   @OneToMany(() => Questions, (question) => question.owner)
   questions: Questions[];

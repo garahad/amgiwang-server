@@ -15,6 +15,7 @@ export const questionsResolver = {
       const { id } = args;
       const questions = await getQuestionsRepository().find({
         where: { owner: id },
+        relations: ['category', 'owner'],
       });
       return questions;
     },
@@ -22,6 +23,8 @@ export const questionsResolver = {
   Mutation: {
     addQuestion: async (_: any, args: any) => {
       const { owner, category, importance, questionContent, answer } = args;
+      console.log('category', category);
+      console.log('owner', owner);
       try {
         const question = getQuestionsRepository().create({
           owner,

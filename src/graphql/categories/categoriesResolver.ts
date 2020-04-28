@@ -5,17 +5,18 @@ export const categoriesResolver = {
     getCategories: async (_: any, args: any) => {
       const { id } = args;
       const categories = await getCategoriesRepository().find({
-        where: { userId: id },
+        where: { user: id },
+        relations: ['user'],
       });
       return categories;
     },
   },
   Mutation: {
     addCategory: async (_: any, args: any) => {
-      const { userId, domain, subdomain } = args;
+      const { user, domain, subdomain } = args;
       try {
         const category = getCategoriesRepository().create({
-          userId,
+          user,
           domain,
           subdomain,
         });
