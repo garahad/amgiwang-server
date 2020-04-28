@@ -10,7 +10,6 @@ export const userResolver = {
   },
   Mutation: {
     addUser: async (_: any, args: any) => {
-      console.log('args');
       const { snsId, provider, email, nick, password } = args;
       try {
         const user = getUserRepository().create({

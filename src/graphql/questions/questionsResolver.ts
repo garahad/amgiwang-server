@@ -1,15 +1,6 @@
 import { getQuestionsRepository } from '../../database';
 
 export const questionsResolver = {
-  // 수호님것처럼 이 아래가 있어야 하나?
-  // ImportanceEnum: {
-  //   ONE: 'ONE',
-  //   TWO: 'TWO',
-  //   THREE: 'THREE',
-  //   FOUR: 'FOUR',
-  //   FIVE: 'FIVE',
-  // },
-
   Query: {
     getQuestions: async (_: any, args: any) => {
       const { id } = args;
@@ -23,8 +14,6 @@ export const questionsResolver = {
   Mutation: {
     addQuestion: async (_: any, args: any) => {
       const { owner, category, importance, questionContent, answer } = args;
-      console.log('category', category);
-      console.log('owner', owner);
       try {
         const question = getQuestionsRepository().create({
           owner,

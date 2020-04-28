@@ -8,9 +8,10 @@ import connectDB, {
 } from '../database';
 
 const addUser = async (args: any) => {
-  const { snsId, provider, email, nick, password } = args;
+  const { id, snsId, provider, email, nick, password } = args;
   try {
     const user = getUserRepository().create({
+      id,
       snsId,
       provider,
       email,
@@ -26,12 +27,10 @@ const addUser = async (args: any) => {
 };
 
 const addCategory = async (args: any) => {
-  const { user, domain, subdomain } = args;
-  // const userId = await getUserRepository().findOne({
-  //   id: user,
-  // });
+  const { id, user, domain, subdomain } = args;
   try {
     const category = getCategoriesRepository().create({
+      id,
       user,
       domain,
       subdomain,
@@ -45,16 +44,10 @@ const addCategory = async (args: any) => {
 };
 
 const addQuestion = async (args: any) => {
-  const { owner, category, importance, questionContent, answer } = args;
-  // const user = await getUserRepository().findOne({
-  //   id: owner,
-  // });
-  // const cate = await getCategoriesRepository().findOne({
-  //   id: category,
-  // });
-  // console.log('cate', cate);
+  const { id, owner, category, importance, questionContent, answer } = args;
   try {
     const question = getQuestionsRepository().create({
+      id,
       owner,
       category,
       importance,
