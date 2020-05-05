@@ -72,6 +72,7 @@ const run = async () => {
   await insertData(testUsers, addUser);
   await insertData(testCategories, addCategory);
   await insertData(testQuestions, addQuestion);
+  // connectDB 정도만 await 효과 있을지 모르겠고, 뒤에 insertData는 promise return 함수가 아니라 await 붙일 필요가 없는 듯. 작동 안함.
 };
 
 run();

@@ -14,19 +14,19 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   nick: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255, unique: true })
   email: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   password: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   provider: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   snsId: string;
 
   @OneToMany(() => Categories, (category) => category.user)

@@ -8,6 +8,9 @@ import { resolvers, schemas } from './graphql';
 import connectDB from './database';
 
 // 나중에 HF server 보고 cors 설정 등 추가할 수
+// import http 는 왜 해야 하지?
+// pubsub은 뭐지?
+// authorization 및 playground setting
 
 const startServer = async () => {
   const server = new ApolloServer({ typeDefs: schemas, resolvers });
