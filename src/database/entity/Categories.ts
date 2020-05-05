@@ -18,10 +18,10 @@ export class Categories {
   @ManyToOne(() => User, (user) => user.questions)
   user: User;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   domain: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   subdomain: string;
 
   @OneToMany(() => Questions, (question) => question.category)

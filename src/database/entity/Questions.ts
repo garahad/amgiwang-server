@@ -9,8 +9,8 @@ import {
 import { User } from './User';
 import { Categories } from './Categories';
 
-// 왜 난 여기 eslint 아래 에러 나지? export는 왜 붙여야하지?
-export enum Importance {
+// 왜 난 여기 eslint 아래 에러 나지?
+enum Importance {
   ONE = 'ONE',
   TWO = 'TWO',
   THREE = 'THREE',
@@ -28,16 +28,24 @@ export class Questions {
 
   @ManyToOne(() => Categories, (category) => category.questions)
   category: Categories;
-  // category: string;
 
   @Column({ type: 'enum', enum: Importance })
   importance: Importance;
-  // importance: string;
 
-  @Column()
+  @Column({
+    type: 'text',
+    nullable: true,
+    charset: 'utf8mb4',
+    collation: 'utf8mb4_unicode_ci',
+  })
   questionContent: string;
 
-  @Column()
+  @Column({
+    type: 'text',
+    nullable: true,
+    charset: 'utf8mb4',
+    collation: 'utf8mb4_unicode_ci',
+  })
   answer: string;
 
   @CreateDateColumn()
