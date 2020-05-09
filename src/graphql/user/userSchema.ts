@@ -4,7 +4,7 @@ import { gql } from 'apollo-server-express';
 
 export const userSchema = gql`
   extend type Query {
-    getUser(id: String!): User
+    getUser(id: Int!): User
   }
   extend type Mutation {
     addUser(
@@ -16,7 +16,7 @@ export const userSchema = gql`
     ): Boolean!
   }
   type User {
-    id: String!
+    id: Int!
     nick: String!
     email: String!
     password: String!

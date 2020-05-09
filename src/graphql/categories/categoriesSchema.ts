@@ -5,7 +5,7 @@ export const categoriesSchema = gql`
     getCategories(id: Int!): [Category]
   }
   extend type Mutation {
-    addCategory(user: Int!, domain: String!, subdomain: String!): Boolean!
+    addCategory(user: Int!, domain: String!, subdomain: String): Boolean!
   }
   type Category {
     id: Int!
