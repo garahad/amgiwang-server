@@ -12,6 +12,15 @@ export const questionsSchema = gql`
       questionContent: String!
       answer: String!
     ): Boolean!
+    editQuestion(
+      id: Int!
+      owner: Int
+      category: Int
+      importance: ImportanceEnum
+      questionContent: String
+      answer: String
+    ): Boolean!
+    deleteQuestion(id: Int!): Boolean!
   }
   type Question {
     id: Int!

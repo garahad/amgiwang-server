@@ -29,10 +29,14 @@ export class User {
   @Column({ type: 'varchar', length: 255 })
   snsId: string;
 
-  @OneToMany(() => Categories, (category) => category.user)
+  @OneToMany(() => Categories, (category) => category.user, {
+    cascade: true,
+  })
   categories: Categories[];
 
-  @OneToMany(() => Questions, (question) => question.owner)
+  @OneToMany(() => Questions, (question) => question.owner, {
+    cascade: true,
+  })
   questions: Questions[];
 
   @CreateDateColumn()

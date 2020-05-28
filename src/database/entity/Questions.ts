@@ -23,10 +23,12 @@ export class Questions {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.questions)
+  @ManyToOne(() => User, (user) => user.questions, { onDelete: 'CASCADE' })
   owner: User;
 
-  @ManyToOne(() => Categories, (category) => category.questions)
+  @ManyToOne(() => Categories, (category) => category.questions, {
+    onDelete: 'CASCADE',
+  })
   category: Categories;
 
   @Column({ type: 'enum', enum: Importance })
