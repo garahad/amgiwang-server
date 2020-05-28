@@ -15,16 +15,18 @@ export class Categories {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.questions)
+  @ManyToOne(() => User, (user) => user.questions, { onDelete: 'CASCADE' })
   user: User;
 
   @Column({ type: 'varchar', length: 255 })
   domain: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, default: '' })
   subdomain: string;
 
-  @OneToMany(() => Questions, (question) => question.category)
+  @OneToMany(() => Questions, (question) => question.category, {
+    cascade: true,
+  })
   questions: Questions[];
 
   @CreateDateColumn()

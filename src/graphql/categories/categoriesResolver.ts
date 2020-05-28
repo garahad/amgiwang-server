@@ -1,3 +1,4 @@
+import { Categories } from '../../database/entity/Categories';
 import { getCategoriesRepository } from '../../database';
 
 export const categoriesResolver = {
@@ -23,6 +24,48 @@ export const categoriesResolver = {
         });
         await getCategoriesRepository().save(category);
         return true;
+      } catch (error) {
+        console.log('error', error);
+        return false;
+      }
+    },
+    editCategory: async (_: any, args: any) => {
+      const { id, domain, subdomain } = args;
+
+      try {
+        await getCategoriesRepository()
+          .createQueryBuilder('category')
+          .update(Categories)
+          .set({ domain, subdomain })
+          .where('id = :id', { id })
+          .execute();
+        return true;
+      } catch (error) {
+        console.log('error', error);
+        return false;
+      }
+    },
+    deleteCategory: async (_: any, args: any) => {
+      const { id, domain } = args;
+      try {
+        if (id) {
+          await getCategoriesRepository()
+            .createQueryBuilder()
+            .delete()
+            .from(Categories)
+            .where('id = :id', { id })
+            .execute();
+          return true;
+          // category에 딸린 questions들까지 엮어서 지워야 함.
+        }
+        await getCategoriesRepository()
+          .createQueryBuilder()
+          .delete()
+          .from(Categories)
+          .where('domain = :domain', { domain })
+          .execute();
+        return true;
+        // 여기서 domain에 딸린 subdomain들과 questions들까지 엮어서 지워야 함.
       } catch (error) {
         console.log('error', error);
         return false;
