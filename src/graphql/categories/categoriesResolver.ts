@@ -8,6 +8,9 @@ export const categoriesResolver = {
       const categories = await getCategoriesRepository().find({
         where: { user: id },
         relations: ['user'],
+        order: {
+          updatedAt: 'ASC',
+        },
       });
       return categories;
     },
@@ -56,7 +59,6 @@ export const categoriesResolver = {
             .where('id = :id', { id })
             .execute();
           return true;
-          // category에 딸린 questions들까지 엮어서 지워야 함.
         }
         await getCategoriesRepository()
           .createQueryBuilder()
@@ -65,7 +67,6 @@ export const categoriesResolver = {
           .where('domain = :domain', { domain })
           .execute();
         return true;
-        // 여기서 domain에 딸린 subdomain들과 questions들까지 엮어서 지워야 함.
       } catch (error) {
         console.log('error', error);
         return false;
