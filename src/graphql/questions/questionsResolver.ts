@@ -8,6 +8,9 @@ export const questionsResolver = {
       const questions = await getQuestionsRepository().find({
         where: { owner: id },
         relations: ['category', 'owner'],
+        order: {
+          updatedAt: 'ASC',
+        },
       });
       return questions;
     },
