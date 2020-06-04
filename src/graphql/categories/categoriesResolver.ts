@@ -26,19 +26,19 @@ export const categoriesResolver = {
           subdomain,
         });
         await getCategoriesRepository().save(category);
-        const emptyCategory = await getCategoriesRepository().find({
-          where: { domain, subdomain: '' },
-        });
-        if (subdomain !== '' && emptyCategory) {
-          await getCategoriesRepository()
-            .createQueryBuilder()
-            .delete()
-            .from(Categories)
-            .andWhere('domain = :domain', { domain })
-            .andWhere('subdomain = :subdomain', { subdomain: '' })
-            .execute();
-          return true;
-        }
+        // const emptyCategory = await getCategoriesRepository().find({
+        //   where: { domain, subdomain: '' },
+        // });
+        // if (subdomain !== '' && emptyCategory) {
+        //   await getCategoriesRepository()
+        //     .createQueryBuilder()
+        //     .delete()
+        //     .from(Categories)
+        //     .andWhere('domain = :domain', { domain })
+        //     .andWhere('subdomain = :subdomain', { subdomain: '' })
+        //     .execute();
+        //   return true;
+        // }
         return true;
       } catch (error) {
         console.log('error', error);
